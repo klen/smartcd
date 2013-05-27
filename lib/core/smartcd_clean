@@ -1,0 +1,14 @@
+smartcd_clean () {
+    local base=$(_smartcd_base)
+    local dir="$(pwd)"
+    local confdir="$base/scripts$dir"
+
+    _smartcd cd ..
+
+    [[ -f "$confdir/bash_enter" ]] && rm -rf $confdir/bash_enter
+    [[ -f "$confdir/bash_leave" ]] && rm -rf $confdir/bash_leave
+
+    _smartcd cd "$dir"
+
+    echo "Smartcd files has been removed."
+}

@@ -235,6 +235,7 @@ function smartcd() {
                     apush smartcd_onprompt_callbacks "$1"
                     ;;
             config) smartcd_config;;
+            clean) smartcd_clean;;
             export) shift; smartcd_export "$@";;
             import) shift; smartcd_import "$@";;
             inform) shift; if [[ -z $suppress_output ]]; then echo "$@"; fi;;
@@ -851,6 +852,10 @@ function smartcd_upgrade_database() {
 
 function smartcd_helper() {
     _smartcd_load "smartcd_helper" && smartcd_helper "$@"
+}
+
+function smartcd_clean() {
+    _smartcd_load "smartcd_clean" && smartcd_clean "$@"
 }
 
 # Run on load if all the necessary libraries are loaded, otherwise let them do it
